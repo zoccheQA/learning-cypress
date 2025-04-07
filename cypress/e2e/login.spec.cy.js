@@ -1,13 +1,13 @@
-const { selectLimit } = require("async")
+import userData from '../fixtures/user-data.json'
 
+const { selectLimit } = require("async")
 describe('Orange HRM Tests', () => {
- 
   const selectorslist = {
     usernameField: "[name='username']",
     passwordField: "[name='password']",
     loginButton: "[type='submit']",
-    sectionTitleTopBar: '.oxd-text--h6',
     worngCredentialAlertInvalidCredentials: '.oxd-alert-content > .oxd-text',
+    dasboardGrid: ".orangehrm-dashboard-grid",
     WorngCredentialAlertRequiredPassword:'.oxd-input-group > .oxd-text'
   }
  
@@ -17,7 +17,7 @@ describe('Orange HRM Tests', () => {
     cy.get(selectorslist.passwordField).type ('admin123')
     cy.get(selectorslist.loginButton).click ()
     cy.location('pathname').should('equal', '/web/index.php/dashboard/index')
-    cy.get(selectorslist.sectionTitleTopBar).contains('Dashboard')
+    cy.get(selectorslist.dasboardGrid)
   })
   it('Login - Fail - Incorect User name', () => {
     cy.visit('https://opensource-demo.orangehrmlive.com/web/index.php/auth/login')
