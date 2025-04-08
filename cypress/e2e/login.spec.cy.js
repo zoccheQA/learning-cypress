@@ -12,7 +12,7 @@ describe('Orange HRM Tests', () => {
   }
  
   it('Login - Success', () => {
-    cy.visit('https://opensource-demo.orangehrmlive.com/web/index.php/auth/login')
+    cy.visit('/web/index.php/auth/login')
     cy.get(selectorslist.usernameField).type ('Admin')
     cy.get(selectorslist.passwordField).type ('admin123')
     cy.get(selectorslist.loginButton).click ()
@@ -20,21 +20,21 @@ describe('Orange HRM Tests', () => {
     cy.get(selectorslist.dasboardGrid)
   })
   it('Login - Fail - Incorect User name', () => {
-    cy.visit('https://opensource-demo.orangehrmlive.com/web/index.php/auth/login')
+    cy.visit('/web/index.php/auth/login')
     cy.get(selectorslist.usernameField).type ('Test')
     cy.get(selectorslist.passwordField).type ('admin123')
     cy.get(selectorslist.loginButton).click ()
     cy.get(selectorslist.worngCredentialAlertInvalidCredentials)
   })
   it('Login - Fail - Incorect Password', () => {
-    cy.visit('https://opensource-demo.orangehrmlive.com/web/index.php/auth/login')
+    cy.visit('/web/index.php/auth/login')
     cy.get(selectorslist.usernameField).type ('Adim')
     cy.get(selectorslist.passwordField).type ('admin1234')
     cy.get(selectorslist.loginButton).click ()
     cy.get(selectorslist.worngCredentialAlertInvalidCredentials)
   })
   it('Login - Fail - Password not Added', () => {
-    cy.visit('https://opensource-demo.orangehrmlive.com/web/index.php/auth/login')
+    cy.visit('/web/index.php/auth/login')
     cy.get(selectorslist.usernameField).type ('Admin')
     cy.get(selectorslist.loginButton).click ()
     cy.get(selectorslist.WorngCredentialAlertRequiredPassword)
